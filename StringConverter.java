@@ -15,7 +15,7 @@ public class StringConverter
     public static String alphaOnly(String str)
     {
         // remove all characters not in alphabet such as commas and semicolons
-        return str.replaceAll(" ","").replaceALL(":","").replaceALL(";","").replaceALL(",","").replaceALL("?","").replaceALL("!","").replaceALL(":","").replaceALL("&","").replaceALL(".","");
+        return str.replaceAll("[^a-zA-Z]", "");
     }
     // check if word is a palindrome method
     public static boolean checkPalindrome(String str)
@@ -25,7 +25,7 @@ public class StringConverter
         str = alphaOnly(str);
         // converts string str into lowercase using .toLowerCase()
         str = str.toLowerCase();
-        String rev = StringConverter.reverse(str);
+        rev = StringConverter.reverse(str);
         // check if word is a palindrome by checking original to temp and if match then true, else false
         if (str.equals(rev))
         {
@@ -66,7 +66,7 @@ public class StringConverter
                     first = str.substring(0, i);
                     last = str.substring(i);
                 }
-                return end + start + "ay";
+                return last + first + "ay";
             }
         }
         // if no vowels exist in str then only attach "ay"
@@ -75,8 +75,7 @@ public class StringConverter
     // converts the string into shorthand version
     public static String shorthand(String str)
     {
-        // manually remove all vowels from str, and also convert for - 4. and - &, to - 2, and you - U.
-        str = str.replaceAll("a", "").replaceALL("e","").replaceALL("i","").replaceALL("o","").replaceALL("u","").replaceALL("A","").replaceALL("E","").replaceALL("I","").replaceALL("O","").replaceAll("U", "").replaceAll("you","U").replaceAll("and","&").replaceAll("to","2").replaceAll("for","4");
+        str = str.replace(" and "," & ").replace(" you "," U ").replace(" to "," 2 ").replace(" for "," 4 ").replaceALL("a","").replaceALL("e","").replaceALL("i","").replaceALL("o","").replaceALL("u","").replaceALL("A","").replaceALL("E","").replaceALL("I","").replaceALL("O","");
         return str;
     }
 }
