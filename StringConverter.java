@@ -25,6 +25,7 @@ public class StringConverter
         str = alphaOnly(str);
         // converts string str into lowercase using .toLowerCase()
         str = str.toLowerCase();
+        // reverse the string
         rev = StringConverter.reverse(str);
         // check if word is a palindrome by checking original to temp and if match then true, else false
         if (str.equals(rev))
@@ -45,7 +46,7 @@ public class StringConverter
         // string of vowels for checking in word
         String vowels = "aeiouAEIOU";
         str = alphaOnly(str);
-        // if it starts with a vowel only add "yay"
+        // if string starts with a vowel only add "yay"
         if (vowels.indexOf(str.substring(0, 1)) >= 0)
         {
             return str + "yay";
@@ -53,7 +54,7 @@ public class StringConverter
         //check for vowel in str
         for (int i = 1, k = str.length(); i < k; i++)
         {
-            if (vowels.indexOf(str.substring(0, 1)) >= 0)
+            if (vowels.indexOf(str.substring(i, i + 1)) >= 0)
             {
                 if (Character.isUpperCase(str.charAt(0)))
                 {
@@ -75,7 +76,8 @@ public class StringConverter
     // converts the string into shorthand version
     public static String shorthand(String str)
     {
-        str = str.replace(" and "," & ").replace(" you "," U ").replace(" to "," 2 ").replace(" for "," 4 ").replaceALL("a","").replaceALL("e","").replaceALL("i","").replaceALL("o","").replaceALL("u","").replaceALL("A","").replaceALL("E","").replaceALL("I","").replaceALL("O","");
-        return str;
+        // manually remove all vowels from str, and also convert for - 4. and - &, to - 2, and you - U.
+        String shrt = str.replaceAll("for", "4").replaceAll(" to ", " 2 ").replaceAll(" and ", " & ").replaceAll("you", "U").replaceAll("a", "").replaceAll("e", "").replaceAll("i", "").replaceAll("o", "").replaceAll("u", "").replaceAll("A", "").replaceAll("E", "").replaceAll("I", "").replaceAll("O", "");
+        return shrt;
     }
 }

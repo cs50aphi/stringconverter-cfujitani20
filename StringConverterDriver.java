@@ -7,7 +7,6 @@ public class StringConverterDriver
 /**
 * Main method that starts the test. All four methods will be tested.
 */
-
  public static void main(String[] args)
  {
     // Reverse
